@@ -15,6 +15,14 @@
     <Button android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="下一行"
-        android:onClick="nextLine"/>
+        android:text="开始播放"
+        android:onClick="start"/>
+    
+     <Button 
+         android:layout_alignParentRight="true"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="停止播放"
+        android:onClick="stop"/>
 </RelativeLayout>

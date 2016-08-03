@@ -18,8 +18,11 @@ public class MainActivity extends Activity {
 		yluo_mar = (YluoMarqueeView) findViewById(R.id.yluo_mar);
 	}
 	
-	public void nextLine(View view) {
+	public void start(View view) {
 		yluo_mar.startPlay();
+	}
+	public void stop(View view) {
+		yluo_mar.stopPlay();
 	}
 
 }

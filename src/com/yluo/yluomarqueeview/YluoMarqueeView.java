@@ -11,6 +11,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Scroller;
 
@@ -24,7 +25,7 @@ public class YluoMarqueeView extends View {
 
 	private ArrayList<MarqueeLine> mContents;
 
-	private int mLineHeight = 50;
+	private int mLineHeight = 25;
 
 	private int mCurline = 0; // µ±Ç°ÐÐ
 
@@ -43,6 +44,8 @@ public class YluoMarqueeView extends View {
 	private boolean mIsScrolling = false;
 	
 	private boolean mIsPlay = false;
+	
+	private int mTextSize = 15;
 
 	
 	private PlayRunnable playRunnable = new PlayRunnable();
@@ -63,11 +66,16 @@ public class YluoMarqueeView extends View {
 	}
 
 	private void init() {
+		
+		mLineHeight = dp2px(mLineHeight);
+		
+		mTextSize = dp2px(mTextSize);
+		
 		mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		mPaint.setAntiAlias(true);
 		mPaint.setColor(Color.RED);
 		mPaint.setStrokeWidth(1);
-		mPaint.setTextSize(30);
+		mPaint.setTextSize(mTextSize);
 
 		mTexRect = new Rect();
 		mPaint.getTextBounds("0", 0, 1, mTexRect);
@@ -221,6 +229,10 @@ public class YluoMarqueeView extends View {
 		public boolean isEllip = false;
 	}
 	
+	public  int dp2px(float dp) {
+		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+				getContext().getResources().getDisplayMetrics());
+	}
 	class PlayRunnable implements Runnable {
 
 		@Override
